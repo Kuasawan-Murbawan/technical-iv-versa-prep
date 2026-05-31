@@ -8,7 +8,17 @@
 
 function login (email: string, password:string){
 
+    const user = users.find(u => u.email === email);
 
+    if(!user){
+        return "User not found";
+    }
+
+    if(user.password !== password){
+        return "Wrong password";
+    }
+
+    return "login Success";
 }
 
 /*
@@ -19,6 +29,7 @@ function login (email: string, password:string){
             4. error is too specific, better use invalid email/password
             5. no token generated
             6. trim and lowercase the email to have better UX
+            7. return consistent error response structure and http status
 
     Data Validation:    - makesure email and password are valid string, not null
                         

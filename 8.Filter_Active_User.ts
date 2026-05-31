@@ -25,7 +25,7 @@ type User = {
     lastLogin: string;
 }
 
-// Assumptions: lastLogin value = "30 days", "1 month ago", "3 months ago", "5 months ago", "1 year ago"
+// Assumptions: lastLogin values = "30 days", "1 month ago", "3 months ago", "5 months ago", "1 year ago"
 
 function getRecentlyActiveUsers(users : User[]): User[]{
 
@@ -38,7 +38,4 @@ function getRecentlyActiveUsers(users : User[]): User[]{
     }
 
     return activeUsers;
-
-
-
 }
