@@ -29,3 +29,12 @@ Write test cases for this API.
 function login(email: string, password: string) {
     
 }
+
+// ====== Positive ======
+
+
+
+// ======= Negative ======
+
+
+// ====== Edge =========
