@@ -15,24 +15,32 @@ Rules:
 
 */
 
-function validateTransaction(amount: number, balance:number): boolean{
+function validateTransaction(amount: number, balance: number): boolean {
+  if (amount <= 0) {
+    return false;
+  }
 
-    if(amount <= 0){
-        return false;
-    }
+  if (amount > balance) {
+    return false;
+  }
 
-    if(amount > balance){
-        return false;
-    }
+  if (balance < 0) {
+    return false;
+  }
 
-    if(balance < 0){
-        return false;
-    }
+  if (!isFinite(amount) || isNaN(amount)) {
+    return false;
+  }
 
-    if(!isFinite(amount) || isNaN(amount)){
-        return false;
-    }
-
-
-    return true;
+  return true;
 }
+
+/*
+
+    isFinite(amount) =  convert amount to integer, then check if the numebr is finite, 
+                        if amount = null, it will convert to 0, the return true
+    
+    Number.isFinite(amount)=    doesnt convert. Straightly check whetehr the value is integer and finite
+                                if amount = null, it will return false
+
+*/

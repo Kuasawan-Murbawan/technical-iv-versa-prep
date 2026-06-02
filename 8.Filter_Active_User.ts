@@ -32,7 +32,7 @@ function getRecentlyActiveUsers(users : User[]): User[]{
     let activeUsers = [];
 
     for(let user of users){
-        if(user.isActive && user.lastLogin<"30 days"){
+        if(user.isActive && user.lastLogin !== "30 days"){
             activeUsers.push(user);
         } 
     }
