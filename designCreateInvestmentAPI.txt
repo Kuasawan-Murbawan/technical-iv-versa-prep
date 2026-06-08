@@ -1,0 +1,55 @@
+// Design create investment goal API.
+
+====== REQUEST ======
+
+POST /api/v1/investment-goals
+Authorization: Bearer <token>
+Content-Type: application/json // specify the request body is sent using JSOn
+
+Body{
+    goal_name: "Property",
+    created_at: "May 26 2025", // better created at BE
+    goal_start_date: "2025-06-01",
+    goal_end_date : "2030-06-01",
+    goal_amount: 20000,
+
+}
+====== RESPONSE ======
+
+SUCCESSFUL
+response : 201 CREATED
+{
+    status: 201,
+    message: "Goal crated successfully",
+    data: {
+            goal_name: "Property",
+            created_at: "May 26 2025",
+            goal_start_date: "July 1 2025",
+            goal_end_date : "June 30 2030",
+            goal_amount: 20000, 
+    }
+}
+
+
+ERROR
+response: 401 Unauthorized
+{
+    status: 401,
+    message: "Token is invalid, missing or expired",
+    data: {}
+}
+
+response: 403 Not Authorized
+{
+    status: 403,
+    message: "Not authorized to perform this operation",
+    data: {}
+}
+
+response: 400 Bad Request
+{
+    status: 400,
+    message: "Start date cannot be earlier than current data",
+    data: {}
+
+}

@@ -1,0 +1,68 @@
+//Design transaction history API.
+
+======== REQUEST =======
+// dont put user id in url, let BE fetch from JWT token
+GET /api/v1/transaction/{account_id}?start_date=2025-01-01&end_date=2025-02-28
+Authorization: Bearer <token>
+Content-Type : application/json
+// no body as it is GET request
+
+======== RESPONSE =======
+Response: 200 OK
+{
+    status: 200,
+    message: "History fetched successfully",
+    data: {
+            "account_id" : "inv-goa-9231s",
+            "start_date": "2025-01-01",
+            "end_date" : "2025-03-01"
+            "transactions" : [
+                {
+                    "trans_ID": "trans001",
+                    "trans_type" : "WITHDRAWAL",
+                    "currency" : "MYR",
+                    "amount" : 1000,
+                    "trans_date" : "2025-01-02",
+                    "status" : "successful",
+                    "remarks" : "Emergency hospital expense"
+                },
+                {
+                    "trans_ID": "trans034",
+                    "trans_type" : "DEPOSIT",
+                    "currency" : "MYR",
+                    "amount" : 2000,
+                    "trans_date" : "2025-02-21",
+                    "status" : "successful",
+                    "remarks" : "Feb investment"
+                },
+            ]
+    }
+}
+
+Response: 401 Unauthorized
+{
+    "status" : 401,
+    "message" : "Token is missing, invalid or expired",
+    "data" : {}
+}
+
+Response: 403 Forbidden
+{
+    "status" : 403,
+    "message" : "User is Unauthorized to perform this operation",
+    "data" : {}
+}
+
+Response: 400 Bad Request
+{
+    "status" : 400,
+    "message" : "Start date cant be later than end date",
+    "data" : {}
+}
+
+Response: 404 Not Found
+{
+    "status" : 404,
+    "message" : "Account not found",
+    "data" : {}
+}

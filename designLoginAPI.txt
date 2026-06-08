@@ -1,0 +1,42 @@
+/*
+
+Design login API.
+
+*/
+
+====== REQUEST =====
+
+POST api/v1/auth/login
+Authorization: Not required
+Body= {
+    "email": "example@test.com",
+    "password": "pw123"
+}
+
+====== RESPONSE ======
+
+SUCCESSFUL
+Response: json : 200 OK
+{
+    "status" : 200,
+    "message" : "Login SUCCESSFUL",
+    "data": {
+
+    "access_token" : "adhuFTYU83298...",
+    "token_type" : "Bearer",
+    expires_in : 3600
+    user: {
+        userId: "us03",
+        email: "",
+        role : "USER"
+    }
+    }
+
+}
+
+ERROR: 401 Unauthorized
+{
+    "status": 401,
+    message: "Invalid username/password",
+    error : {}
+}
